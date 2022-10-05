@@ -1,42 +1,36 @@
 package hexlet.code;
 
+import hexlet.code.games.Even;
+
 import java.util.Scanner;
 public class Engine {
-    public static void even() {
-        int numberOfMoves = 3;
+    public static void play(int userChoice) {
+        final int MOVES = 3;
+
         Cli.greet();
 
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
+        System.out.println(Even.getGameCondition());
 
-        for (int i = 0; i < numberOfMoves; i++) {
-            int number = randomNumber();
-            System.out.print("Question: " + number);
+        for (int i = 0; i < MOVES; i++) {
+            Even.setQuestion();
+            System.out.print("Question: " + Even.getQuestion());
             System.out.print("\nYour answer: ");
 
             Scanner in = new Scanner(System.in);
-            String userAnswer = in.nextLine();
+            String userAnswer = in.next();
 
-            String correctAnswer = (number % 2 == 0) ? "yes" : "no";
+            //String correctAnswer = (Even.calculateTheEven() % 2 == 0) ? "yes" : "no";
 
-            if (correctAnswer.equals(userAnswer)) {
+            if (userAnswer.equals(Even.getCorrectAnswer())) {
                 System.out.println("Correct!");
             } else {
                 System.out.println("'" + userAnswer + "' is wrong answer ;(. "
-                        + "Correct answer was '" + correctAnswer + "'.\n"
+                        + "Correct answer was '" + Even.getCorrectAnswer() + "'.\n"
                         + "Let's try again, " + Cli.getUserName() + "!");
                 return;
             }
         }
 
         System.out.println("Congratulations, " + Cli.getUserName() + "!");
-    }
-
-    public static int randomNumber() {
-        int minNumber = 1;
-        int maxNumber = 100;
-
-        int randomNumber = (int) (Math.random() * (maxNumber - minNumber)) + minNumber;
-
-        return randomNumber;
     }
 }
