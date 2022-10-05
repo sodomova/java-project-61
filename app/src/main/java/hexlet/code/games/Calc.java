@@ -6,14 +6,6 @@ public class Calc {
     private static String question;
     private static int correctAnswer;
 
-    public static String getGameCondition() {
-        return "What is the result of the expression?";
-    }
-
-    public static String getQuestion() {
-        return question;
-    }
-
     public static void setQuestion() {
         int firstNumber = Util.randomNumber();
         int secondNumber = Util.randomNumber();
@@ -33,6 +25,14 @@ public class Calc {
                 question = firstNumber + " * " + secondNumber;
                 break;
         }
+    }
+
+    public static String getGameCondition() {
+        return "What is the result of the expression?";
+    }
+
+    public static String getQuestion() {
+        return question;
     }
 
     public static String getCorrectAnswer() {

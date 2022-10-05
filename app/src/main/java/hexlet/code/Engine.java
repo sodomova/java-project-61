@@ -17,6 +17,9 @@ public class Engine {
             case 3 :
                 gameCondition = Calc.getGameCondition();
                 break;
+            case 4 :
+                gameCondition = GCD.getGameCondition();
+                break;
         }
 
         System.out.println(gameCondition);
@@ -35,6 +38,11 @@ public class Engine {
                     Calc.setQuestion();
                     question = Calc.getQuestion();
                     correctAnswer = Calc.getCorrectAnswer();
+                    break;
+                case 4 :
+                    GCD.setQuestion();
+                    question = GCD.getQuestion();
+                    correctAnswer = GCD.getCorrectAnswer();
                     break;
             }
 
