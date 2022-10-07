@@ -36,6 +36,8 @@ public class Calc {
                 correctAnswer = firstNumber * secondNumber;
                 question = firstNumber + " * " + secondNumber;
                 break;
+            default:
+                break;
         }
     }
 }

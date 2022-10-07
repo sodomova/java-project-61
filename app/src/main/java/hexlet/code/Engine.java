@@ -50,6 +50,9 @@ public class Engine {
             case 5:
                 gameCondition = Progression.getGameCondition();
                 break;
+            case 6:
+                gameCondition = Prime.getGameCondition();
+                break;
             default:
                 break;
         }
@@ -80,6 +83,11 @@ public class Engine {
                 Progression.setResult();
                 result[0] = Progression.getQuestion();
                 result[1] = Progression.getCorrectAnswer();
+                break;
+            case 6:
+                Prime.setResult();
+                result[0] = Prime.getQuestion();
+                result[1] = Prime.getCorrectAnswer();
                 break;
             default:
                 break;

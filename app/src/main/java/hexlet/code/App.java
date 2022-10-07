@@ -9,6 +9,7 @@ public class App {
         System.out.println("3 - Calc");
         System.out.println("4 - GCD");
         System.out.println("5 - Progression");
+        System.out.println("6 - Prime");
         System.out.println("0 - Exit");
         System.out.print("Your choice: ");
 
@@ -19,7 +20,7 @@ public class App {
             case 1 :
                 Cli.greet();
                 break;
-            case 2, 3, 4, 5 :
+            case 2, 3, 4, 5, 6 :
                 Engine.play(userChoice);
                 break;
             default:

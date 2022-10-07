@@ -32,10 +32,15 @@ public class Progression {
     }
 
     public static int[] createProgressing() {
-        int[] progressions = new int[Util.randomNumber(5, 10)];
+        final int MIN_LENGTH = 5;
+        final int MAX_LENGTH = 10;
+        final int MAX_DELTA = 10;
+        final int MAX_FIRST_NUMBER = 20;
 
-        int delta = Util.randomNumber(1, 10);
-        progressions[0] = Util.randomNumber(0, 20);
+        int[] progressions = new int[Util.randomNumber(MIN_LENGTH, MAX_LENGTH)];
+
+        int delta = Util.randomNumber(1, MAX_DELTA);
+        progressions[0] = Util.randomNumber(0, MAX_FIRST_NUMBER);
 
         for (int i = 1; i < progressions.length; i++) {
             progressions[i] = progressions[i - 1] + delta;
