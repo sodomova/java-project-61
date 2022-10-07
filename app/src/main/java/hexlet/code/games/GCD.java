@@ -6,7 +6,19 @@ public class GCD {
     private static String question;
     private static int correctAnswer;
 
-    public static void setQuestion() {
+    public static String getGameCondition() {
+        return "Find the greatest common divisor of given numbers.";
+    }
+
+    public static String getQuestion() {
+        return question;
+    }
+
+    public static String getCorrectAnswer() {
+        return Integer.toString(correctAnswer);
+    }
+
+    public static void setResult() {
         int firstNumber = Util.randomNumber();
         int secondNumber = Util.randomNumber();
         question = firstNumber + " " + secondNumber;
@@ -22,17 +34,5 @@ public class GCD {
             }
         }
         correctAnswer = firstNumber;
-    }
-
-    public static String getGameCondition() {
-        return "Find the greatest common divisor of given numbers.";
-    }
-
-    public static String getQuestion() {
-        return question;
-    }
-
-    public static String getCorrectAnswer() {
-        return Integer.toString(correctAnswer);
     }
 }

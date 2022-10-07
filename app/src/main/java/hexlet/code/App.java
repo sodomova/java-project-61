@@ -8,16 +8,22 @@ public class App {
         System.out.println("2 - Even");
         System.out.println("3 - Calc");
         System.out.println("4 - GCD");
+        System.out.println("5 - Progression");
         System.out.println("0 - Exit");
         System.out.print("Your choice: ");
 
         Scanner in = new Scanner(System.in);
         int userChoice = in.nextInt();
 
-        if (userChoice == 1) {
-            Cli.greet();
-        } else if (userChoice == 2 || userChoice == 3 || userChoice == 4) {
-            Engine.play(userChoice);
+        switch (userChoice) {
+            case 1 :
+                Cli.greet();
+                break;
+            case 2, 3, 4, 5 :
+                Engine.play(userChoice);
+                break;
+            default:
+                break;
         }
     }
 }

@@ -6,7 +6,19 @@ public class Calc {
     private static String question;
     private static int correctAnswer;
 
-    public static void setQuestion() {
+    public static String getGameCondition() {
+        return "What is the result of the expression?";
+    }
+
+    public static String getQuestion() {
+        return question;
+    }
+
+    public static String getCorrectAnswer() {
+        return Integer.toString(correctAnswer);
+    }
+
+    public static void setResult() {
         int firstNumber = Util.randomNumber();
         int secondNumber = Util.randomNumber();
         int arithmeticOperation = Util.randomNumber(1, 3);
@@ -25,17 +37,5 @@ public class Calc {
                 question = firstNumber + " * " + secondNumber;
                 break;
         }
-    }
-
-    public static String getGameCondition() {
-        return "What is the result of the expression?";
-    }
-
-    public static String getQuestion() {
-        return question;
-    }
-
-    public static String getCorrectAnswer() {
-        return Integer.toString(correctAnswer);
     }
 }

@@ -13,11 +13,11 @@ public class Even {
         return Integer.toString(question);
     }
 
-    public static void setQuestion() {
-        question = Util.randomNumber();
-    }
-
     public static String getCorrectAnswer() {
         return (question % 2 == 0) ? "yes" : "no";
+    }
+
+    public static void setResult() {
+        question = Util.randomNumber();
     }
 }
