@@ -4,15 +4,11 @@ import hexlet.code.Engine;
 import hexlet.code.Util;
 
 public class Even {
-    final static String RULE_OF_GAME = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+    public static final String RULE_OF_GAME = "Answer 'yes' if the number is even, otherwise answer 'no'.";
     private static int question;
 
     public static void startPlaying() {
         Engine.playGame("Even");
-    }
-
-    public static String getRuleOfGame() {
-        return RULE_OF_GAME;
     }
 
     private static String getQuestion() {
