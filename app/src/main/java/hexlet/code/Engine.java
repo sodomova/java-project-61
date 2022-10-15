@@ -1,98 +1,99 @@
 package hexlet.code;
 
-import hexlet.code.games.*;
+import hexlet.code.games.Calc;
+import hexlet.code.games.Even;
+import hexlet.code.games.GCD;
+import hexlet.code.games.Prime;
+import hexlet.code.games.Progression;
 
 import java.util.Scanner;
 public class Engine {
-    public static void play(int userChoice) {
-        final int MOVES = 3;
+    static final int MOVES = 3;
+    private static String userName;
 
-        Cli.greet();
-        System.out.println(getGameCondition(userChoice));
+    public static void playGame(String nameGame) {
+        greet();
+        getRuleOfGame(nameGame);
 
         for (int i = 0; i < MOVES; i++) {
-            String[] resultsGame = getResultGame(userChoice);
+            String[] resultsGame = getResultGame(nameGame);
             String question = resultsGame[0];
             String correctAnswer = resultsGame[1];
 
             System.out.print("Question: " + question);
             System.out.print("\nYour answer: ");
 
-            Scanner in = new Scanner(System.in);
-            String userAnswer = in.next();
+            Scanner scanner = new Scanner(System.in);
+            String userAnswer = scanner.next();
 
             if (userAnswer.equals(correctAnswer)) {
                 System.out.println("Correct!");
             } else {
                 System.out.println("'" + userAnswer + "' is wrong answer ;(. "
                         + "Correct answer was '" + correctAnswer + "'.\n"
-                        + "Let's try again, " + Cli.getUserName() + "!");
+                        + "Let's try again, " + userName + "!");
                 return;
             }
         }
 
-        System.out.println("Congratulations, " + Cli.getUserName() + "!");
+        System.out.println("Congratulations, " + userName + "!");
     }
 
-    public static String getGameCondition(int userChoice) {
-        String gameCondition = "";
+    private static void greet() {
+        Scanner scanner = new Scanner(System.in);
 
-        switch (userChoice) {
-            case 2:
-                gameCondition = Even.getGameCondition();
-                break;
-            case 3:
-                gameCondition = Calc.getGameCondition();
-                break;
-            case 4:
-                gameCondition = GCD.getGameCondition();
-                break;
-            case 5:
-                gameCondition = Progression.getGameCondition();
-                break;
-            case 6:
-                gameCondition = Prime.getGameCondition();
-                break;
-            default:
-                break;
-        }
-
-        return gameCondition;
+        System.out.println("\nWelcome to the Brain Games!");
+        System.out.print("May I have your name? ");
+        userName = scanner.nextLine();
+        System.out.println("Hello, " + userName + "!");
     }
 
-    public static String[] getResultGame(int userChoice) {
-        String[] result = new String[2];
-
-        switch (userChoice) {
-            case 2:
-                Even.setResult();
-                result[0] = Even.getQuestion();
-                result[1] = Even.getCorrectAnswer();
+    private static void getRuleOfGame(String nameGame) {
+        switch (nameGame) {
+            case "Even" :
+                System.out.println(Even.RULE_OF_GAME);
                 break;
-            case 3:
-                Calc.setResult();
-                result[0] = Calc.getQuestion();
-                result[1] = Calc.getCorrectAnswer();
+            case "Calc" :
+                System.out.println(Calc.RULE_OF_GAME);
                 break;
-            case 4:
-                GCD.setResult();
-                result[0] = GCD.getQuestion();
-                result[1] = GCD.getCorrectAnswer();
+            case "GCD" :
+                System.out.println(GCD.RULE_OF_GAME);
                 break;
-            case 5:
-                Progression.setResult();
-                result[0] = Progression.getQuestion();
-                result[1] = Progression.getCorrectAnswer();
+            case "Progression" :
+                System.out.println(Progression.RULE_OF_GAME);
                 break;
-            case 6:
-                Prime.setResult();
-                result[0] = Prime.getQuestion();
-                result[1] = Prime.getCorrectAnswer();
+            case "Prime" :
+                System.out.println(Prime.RULE_OF_GAME
+                );
                 break;
             default:
+                throw new RuntimeException("The game '" + nameGame + "' doesn't exist.");
+        }
+    }
+
+    private static String[] getResultGame(String nameGame) {
+        String[] resultGame = new String[2];
+
+        switch (nameGame) {
+            case "Even" :
+                resultGame = Even.getResultGame();
                 break;
+            case "Calc":
+                resultGame = Calc.getResultGame();
+                break;
+            case "GCD":
+                resultGame = GCD.getResultGame();
+                break;
+            case "Progression":
+                resultGame = Progression.getResultGame();
+                break;
+            case "Prime":
+                resultGame = Prime.getResultGame();
+                break;
+            default:
+                throw new RuntimeException("The game '" + nameGame + "' doesn't exist.");
         }
 
-        return result;
+        return resultGame;
     }
 }
