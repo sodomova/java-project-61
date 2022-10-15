@@ -4,16 +4,12 @@ import hexlet.code.Engine;
 import hexlet.code.Util;
 
 public class Calc {
-    final static String RULE_OF_GAME = "What is the result of the expression?";
+    public static final String RULE_OF_GAME = "What is the result of the expression?";
     private static String question;
     private static int correctAnswer;
 
     public static void startPlaying() {
         Engine.playGame("Calc");
-    }
-
-    public static String getRuleOfGame() {
-        return RULE_OF_GAME;
     }
 
     private static String getQuestion() {
@@ -24,10 +20,23 @@ public class Calc {
         return Integer.toString(correctAnswer);
     }
 
+    public static String[] getResultGame() {
+        String[] resultGame = new String[2];
+
+        setResultGame();
+
+        resultGame[0] = getQuestion();
+        resultGame[1] = getCorrectAnswer();
+
+        return resultGame;
+    }
+
     private static void setResultGame() {
+        final int numberOfArithmeticOperators = 3;
+
         int firstNumber = Util.randomNumber();
         int secondNumber = Util.randomNumber();
-        String arithmeticOperation = Integer.toString(Util.randomNumber(1, 3));
+        String arithmeticOperation = Integer.toString(Util.randomNumber(1, numberOfArithmeticOperators));
         char arithmeticOperationSymbol;
 
         switch (arithmeticOperation) {
@@ -41,7 +50,8 @@ public class Calc {
                 arithmeticOperationSymbol = '*';
                 break;
             default:
-                throw new RuntimeException("The value of " + arithmeticOperation + " does not match the list of possible values. Possible values: 1, 2, 3.");
+                throw new RuntimeException("The value of " + arithmeticOperation
+                        + " does not match the list of possible values. Possible values: 1, 2, 3.");
         }
 
         calculate(firstNumber, secondNumber, arithmeticOperationSymbol);
@@ -64,15 +74,5 @@ public class Calc {
             default:
                 throw new RuntimeException("Unknown operator" + arithmeticOperationSymbol);
         }
-    }
-
-    public static String[] getResultGame() {
-        String[] resultGame = new String[2];
-
-        setResultGame();
-        resultGame[0] = getQuestion();
-        resultGame[1] = getCorrectAnswer();
-
-        return resultGame;
     }
 }
