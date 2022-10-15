@@ -15,11 +15,11 @@ public class Even {
         return RULE_OF_GAME;
     }
 
-    public static String getQuestion() {
+    private static String getQuestion() {
         return Integer.toString(question);
     }
 
-    public static String getCorrectAnswer() {
+    private static String getCorrectAnswer() {
         return (question % 2 == 0) ? "yes" : "no";
     }
 
