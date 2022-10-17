@@ -1,6 +1,6 @@
 package hexlet.code;
 
-public class Util {
+public class Utils {
     static final int MIN = 1;
     static final int MAX = 100;
 
