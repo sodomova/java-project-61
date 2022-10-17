@@ -1,78 +1,38 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import hexlet.code.Util;
+import hexlet.code.Utils;
 
 public class Calc {
     public static final String RULE_OF_GAME = "What is the result of the expression?";
-    private static String question;
-    private static int correctAnswer;
+    private static final char[] OPERATORS = {'+', '-', '*'};
 
     public static void startPlaying() {
         Engine.playGame("Calc");
     }
 
-    private static String getQuestion() {
-        return question;
-    }
-
-    private static String getCorrectAnswer() {
-        return Integer.toString(correctAnswer);
-    }
-
     public static String[] getResultGame() {
-        String[] resultGame = new String[2];
+        int firstNumber = Utils.randomNumber();
+        int secondNumber = Utils.randomNumber();
+        int indexOperator = Utils.randomNumber(0, OPERATORS.length - 1);
+        char operator = OPERATORS[indexOperator];
 
-        setResultGame();
+        String question = firstNumber + " " + operator + " " + secondNumber;
+        String correctAnswer = Integer.toString(calculate(firstNumber, secondNumber, operator));
 
-        resultGame[0] = getQuestion();
-        resultGame[1] = getCorrectAnswer();
-
-        return resultGame;
+        return new String[] {question, correctAnswer};
     }
 
-    private static void setResultGame() {
-        final int numberOfArithmeticOperators = 3;
-
-        int firstNumber = Util.randomNumber();
-        int secondNumber = Util.randomNumber();
-        String arithmeticOperation = Integer.toString(Util.randomNumber(1, numberOfArithmeticOperators));
-        char arithmeticOperationSymbol;
-
-        switch (arithmeticOperation) {
-            case "1" :
-                arithmeticOperationSymbol = '+';
-                break;
-            case "2" :
-                arithmeticOperationSymbol = '-';
-                break;
-            case "3" :
-                arithmeticOperationSymbol = '*';
-                break;
-            default:
-                throw new RuntimeException("The value of " + arithmeticOperation
-                        + " does not match the list of possible values. Possible values: 1, 2, 3.");
-        }
-
-        calculate(firstNumber, secondNumber, arithmeticOperationSymbol);
-    }
-
-    private static void calculate(int firstNumber, int secondNumber, char arithmeticOperationSymbol) {
-        switch (arithmeticOperationSymbol) {
+    private static int calculate(int firstNumber, int secondNumber, char operator) {
+        switch (operator) {
             case '+' :
-                question = firstNumber + " + " + secondNumber;
-                correctAnswer = firstNumber + secondNumber;
-                break;
+                return firstNumber + secondNumber;
             case '-' :
-                question = firstNumber + " - " + secondNumber;
-                correctAnswer = firstNumber - secondNumber;
-                break;
+                return firstNumber - secondNumber;
             case '*' :
-                question = firstNumber + " * " + secondNumber;
-                correctAnswer = firstNumber * secondNumber;
-                break;
+                return firstNumber * secondNumber;
             default:
-                throw new RuntimeException("Unknown operator" + arithmeticOperationSymbol);
+                throw new RuntimeException("Unknown operator" + operator);
         }
     }
 }
