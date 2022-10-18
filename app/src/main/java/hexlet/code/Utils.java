@@ -11,7 +11,6 @@ public class Utils {
     }
 
     public static int randomNumber(int min, int max) {
-
         int randomNumber = (int) (Math.random() * ((max - min) + 1)) + min;
 
         return randomNumber;
