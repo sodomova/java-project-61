@@ -4,13 +4,19 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Progression {
-    public static final String RULE_OF_GAME = "What number is missing in the progression?";
+    private static final String RULE_OF_GAME = "What number is missing in the progression?";
 
     public static void startPlaying() {
-        Engine.playGame("Progression");
+        String[][] gameData = new String[Engine.MOVES][2];
+
+        for (int i = 0; i < Engine.MOVES; i++) {
+            gameData[i] = getResultGame();
+        }
+
+        Engine.playGame(RULE_OF_GAME, gameData);
     }
 
-    public static String[] getResultGame() {
+    private static String[] getResultGame() {
         final int minLength = 5;
         final int maxLength = 10;
         final int maxDelta = 10;
