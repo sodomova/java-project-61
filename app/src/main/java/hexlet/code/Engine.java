@@ -6,7 +6,13 @@ public class Engine {
     public static final int MOVES = 3;
 
     public static void playGame(String ruleOfGame, String[][] gameData) {
-        String userName = greet();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("\nWelcome to the Brain Games!");
+        System.out.print("May I have your name? ");
+        String userName = scanner.nextLine();
+        System.out.println("Hello, " + userName + "!");
+
         System.out.println(ruleOfGame);
 
         for (String[] resultGame : gameData) {
@@ -16,7 +22,6 @@ public class Engine {
             System.out.print("Question: " + question);
             System.out.print("\nYour answer: ");
 
-            Scanner scanner = new Scanner(System.in);
             String userAnswer = scanner.next();
 
             if (userAnswer.equals(correctAnswer)) {
@@ -30,16 +35,5 @@ public class Engine {
         }
 
         System.out.println("Congratulations, " + userName + "!");
-    }
-
-    private static String greet() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("\nWelcome to the Brain Games!");
-        System.out.print("May I have your name? ");
-        String userName = scanner.nextLine();
-        System.out.println("Hello, " + userName + "!");
-
-        return userName;
     }
 }
